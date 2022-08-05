@@ -33,7 +33,6 @@ func main() {
 	}
 	// Generate codes and test all
 	codes := g.GenerateCodes(nToGenerate, 5, 10)
-	(*codes)[9] = "paevz3qZ"
 	invites, err := b.Try(timeoutDelay, *codes...)
 	if err != nil {
 		panic(err)
@@ -50,7 +49,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	f, err := os.OpenFile(outPath, os.O_WRONLY, 0664)
+	f, err := os.OpenFile(outPath, os.O_WRONLY|os.O_CREATE, 0664)
 	if err != nil {
 		panic(err)
 	} else {
